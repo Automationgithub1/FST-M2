@@ -1,0 +1,56 @@
+HadoopVersion   PigVersion      UserId  StartedAt       FinishedAt      Features
+3.3.1   0.17.0  root    2024-02-12 09:55:19     2024-02-12 09:55:42     GROUP_BY
+
+Success!
+
+Job Stats (time in seconds):
+JobId   Maps    Reduces MaxMapTime      MinMapTime      AvgMapTime      MedianMapTime   MaxReduceTime   MinReduceTime   AvgReduceTimeMedianReducetime        Alias   Feature Outputs
+job_1707720767310_0002  1       1       3       3       3       3       2       2       2       2       cntd,grpd,inputFile,words   GROUP_BY,COMBINER        hdfs:///user/Santosh/PigOutput22,
+
+Input(s):
+Successfully read 2 records (423 bytes) from: "hdfs:///user/Santosh/input.txt"
+
+Output(s):
+Successfully stored 7 records (50 bytes) in: "hdfs:///user/Santosh/PigOutput22"
+
+
+Counters:
+Total records written : 7
+Total bytes written : 50
+Spillable Memory Manager spill count : 0
+Total bags proactively spilled: 0
+Total records proactively spilled: 0
+
+Job DAG:
+job_1707720767310_0002
+
+
+2024-02-12 09:55:42,049 [main] INFO  org.apache.hadoop.yarn.client.DefaultNoHARMFailoverProxyProvider - Connecting to ResourceManager at /0.0.0.0:8032
+2024-02-12 09:55:42,053 [main] INFO  org.apache.hadoop.mapred.ClientServiceDelegate - Application state is completed. FinalApplicationStatus=SUCCEEDED. Redirecting to job history server
+2024-02-12 09:55:42,074 [main] INFO  org.apache.hadoop.yarn.client.DefaultNoHARMFailoverProxyProvider - Connecting to ResourceManager at /0.0.0.0:8032
+2024-02-12 09:55:42,078 [main] INFO  org.apache.hadoop.mapred.ClientServiceDelegate - Application state is completed. FinalApplicationStatus=SUCCEEDED. Redirecting to job history server
+2024-02-12 09:55:42,100 [main] INFO  org.apache.hadoop.yarn.client.DefaultNoHARMFailoverProxyProvider - Connecting to ResourceManager at /0.0.0.0:8032
+2024-02-12 09:55:42,106 [main] INFO  org.apache.hadoop.mapred.ClientServiceDelegate - Application state is completed. FinalApplicationStatus=SUCCEEDED. Redirecting to job history server
+2024-02-12 09:55:42,134 [main] INFO  org.apache.pig.backend.hadoop.executionengine.mapReduceLayer.MapReduceLauncher - Success!
+2024-02-12 09:55:42,159 [main] INFO  org.apache.pig.Main - Pig script completed in 24 seconds and 634 milliseconds (24634 ms)
+root@a65938940cc7:/#
+
+
+root@a65938940cc7:/# hdfs dfs -ls /user/Santosh
+Found 3 items
+drwxr-xr-x   - root supergroup          0 2024-02-12 09:46 /user/Santosh/PigOutput
+drwxr-xr-x   - root supergroup          0 2024-02-12 09:55 /user/Santosh/PigOutput22
+-rw-r--r--   1 root supergroup         49 2024-02-09 16:53 /user/Santosh/input.txt
+root@a65938940cc7:/# hdfs dfs -ls /user/Santosh/PigOutput22
+Found 2 items
+-rw-r--r--   1 root supergroup          0 2024-02-12 09:55 /user/Santosh/PigOutput22/_SUCCESS
+-rw-r--r--   1 root supergroup         50 2024-02-12 09:55 /user/Santosh/PigOutput22/part-r-00000
+root@a65938940cc7:/# hdfs dfs -cat  /user/Santosh/PigOutput22/part-r-00000
+an      1
+is      1
+has     1
+This    2
+file    1
+content 1
+example 2
+root@a65938940cc7:/#
