@@ -1,0 +1,26 @@
+version: '3'
+services:
+    postgress:
+        image: "postgress:latest"
+        environment:
+            - POSTGRESS_HOST=postgres
+            - POSTGRESS_PORT=5432
+            - POSTGRES_USERNAME=postgres
+            - POSTGRES_PASSWORD=postgres_password
+            - POSTGRES_DB=simple_blog_api
+            - PORT=3000
+        restart: always
+
+    blog-api:
+        image: santoshkumar25/simple_blog_api
+        build:
+            context: .
+            dockerfile: Dockerfile.dev
+        ports: 
+            - '3000:3000'
+        environment:
+            - POSTGRES_HOST=postgres
+            - POSTGRES_PORT=5432
+            - POSTGRES_USERNAME=postgres
+            - POSTGRES_PASSWORD=postgres_password
+            - POSTGRES_DB=simple_blog_api
